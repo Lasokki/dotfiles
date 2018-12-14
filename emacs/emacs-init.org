@@ -75,9 +75,12 @@
 (add-hook 'vue-mode-hook #'lsp)
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode))
 #+END_SRC
+
 * AC-Config
+#+BEGIN_SRC emacs-lisp
 ;;(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 ;;(ac-config-default)
+#+END_SRC
 
 * Revert-buffer
 #+BEGIN_SRC emacs-lisp
@@ -97,6 +100,7 @@
 (global-set-key (kbd "C-M-<return>") 'er/contract-region)
 (delete-selection-mode 1)
 #+END_SRC
+
 * Magit
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "C-x g") 'magit-status)
@@ -105,11 +109,12 @@
 #+END_SRC
 
 * company-mode
-
-(add-hook 'after-init-hook 'global-company-mode)
-(add-to-list 'company-backends 'company-web-html)
-(add-to-list 'company-backends 'company-web-jade)
-(add-to-list 'company-backends 'company-web-slim)
+#+BEGIN_SRC emacs-lisp
+;;(add-hook 'after-init-hook 'global-company-mode)
+;;(add-to-list 'company-backends 'company-web-html)
+;;(add-to-list 'company-backends 'company-web-jade)
+;;(add-to-list 'company-backends 'company-web-slim)
+#+END_SRC
 
 * dired-open-multiple-files
 #+BEGIN_SRC emacs-lisp
@@ -122,6 +127,7 @@
        (let* ((fn-list (dired-get-marked-files nil arg)))
          (mapc 'find-file fn-list)))))
 #+END_SRC
+
 * Merlin
 #+BEGIN_SRC emacs-lisp
 (let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
@@ -132,21 +138,25 @@
   (add-hook 'caml-mode-hook 'merlin-mode t)))
 (setq merlin-ac-setup 'easy)
 #+END_SRC
+
 * EditorConfig
 #+BEGIN_SRC emacs-lisp
 (editorconfig-mode 1)
 #+END_SRC
+
 * Dockerfile
 #+BEGIN_SRC emacs-lisp
 (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
 #+END_SRC
+
 * Helm
-  #+BEGIN_SRC emacs-lisp
-  (helm-mode 1)
-  (global-set-key (kbd "M-x") 'helm-M-x)
-  (global-set-key (kbd "C-x C-f") 'helm-find-files)
-  (global-set-key (kbd "C-c f") 'helm-projectile)
-  #+END_SRC
+#+BEGIN_SRC emacs-lisp
+(helm-mode 1)
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "C-c f") 'helm-projectile)
+#+END_SRC
+
 * Tide
 #+BEGIN_SRC emacs-lisp
 (defun setup-tide-mode ()
@@ -167,10 +177,12 @@
 (add-hook 'typescript-mode-hook #'setup-tide-mode)
 (add-hook 'js2-mode-hook #'setup-tide-mode)
 #+END_SRC
+
 * NGINX
 #+BEGIN_SRC emacs-lisp
 (setq nginx-indent-level 2)
 #+END_SRC
+
 * Rust
 #+BEGIN_SRC emacs-lisp
 (with-eval-after-load 'lsp-mode
@@ -184,29 +196,33 @@
 (add-hook 'rust-mode-hook #'racer-mode)
 (add-hook 'racer-mode-hook #'eldoc-mode)
 #+END_SRC
+
 * Groovy
 #+BEGIN_SRC emacs-lisp
 (add-hook 'groovy-mode-hook
           (lambda ()
             (c-set-offset 'label 2)))
 #+END_SRC
+
 * TypeScript-LSP
 #+BEGIN_SRC emacs-lisp
 (add-hook 'js-mode-hook #'lsp)
 (add-hook 'js2-mode-hook #'lsp)
 (add-hook 'typescript-mode-hook #'lsp) ;; for typescript support
 #+END_SRC
+
 * LSP General
 #+BEGIN_SRC emacs-lisp
 (add-hook 'lsp-after-open-hook 'lsp-enable-imenu)
 #+END_SRC
+
 * Restclient
 #+BEGIN_SRC emacs-lisp
 (add-to-list 'auto-mode-alist '("\\.api\\'" . restclient-mode))
 #+END_SRC
+
 * CSS
 #+BEGIN_SRC emacs-lisp
-
 (add-to-list 'auto-mode-alist '("\\.css\\'" . xah-css-mode))
 
 (defun my-css-mode-setup ()
