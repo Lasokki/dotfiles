@@ -15,7 +15,6 @@
 (require 'org-install)
 (require 'ob-tangle)
 (require 'web-mode)
-(require 'auto-complete-config)
 (require 'expand-region)
 (require 'fic-mode)
 (require 'company)

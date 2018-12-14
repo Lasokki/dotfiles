@@ -61,7 +61,6 @@
 (setq js2-missing-semi-one-line-override t)
 (setq js2-basic-offset 2)
 
-(add-hook 'js2-mode-hook 'ac-js2-mode 'turn-on-fixme-mode)
 (add-hook 'js2-mode-hook 'prettier-js-mode)
 #+END_SRC
 
@@ -74,12 +73,6 @@
 #+BEGIN_SRC emacs-lisp
 (add-hook 'vue-mode-hook #'lsp)
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode))
-#+END_SRC
-
-* AC-Config
-#+BEGIN_SRC emacs-lisp
-;;(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-;;(ac-config-default)
 #+END_SRC
 
 * Revert-buffer
@@ -110,10 +103,10 @@
 
 * company-mode
 #+BEGIN_SRC emacs-lisp
-;;(add-hook 'after-init-hook 'global-company-mode)
-;;(add-to-list 'company-backends 'company-web-html)
-;;(add-to-list 'company-backends 'company-web-jade)
-;;(add-to-list 'company-backends 'company-web-slim)
+(add-hook 'after-init-hook 'global-company-mode)
+(add-to-list 'company-backends 'company-web-html)
+(add-to-list 'company-backends 'company-web-jade)
+(add-to-list 'company-backends 'company-web-slim)
 #+END_SRC
 
 * dired-open-multiple-files
@@ -157,27 +150,6 @@
 (global-set-key (kbd "C-c f") 'helm-projectile)
 #+END_SRC
 
-* Tide
-#+BEGIN_SRC emacs-lisp
-(defun setup-tide-mode ()
-  (interactive)
-  (tide-setup)
-  (flycheck-mode +1)
-  (setq flycheck-check-syntax-automatically '(save mode-enabled))
-  (eldoc-mode +1)
-  (tide-hl-identifier-mode +1)
-  ;; company is an optional dependency. You have to
-  ;; install it separately via package-install
-  ;; `M-x package-install [ret] company`
-  (company-mode +1))
-
-;; aligns annotation to the right hand side
-(setq company-tooltip-align-annotations t)
-(add-hook 'before-save-hook 'tide-format-before-save)
-(add-hook 'typescript-mode-hook #'setup-tide-mode)
-(add-hook 'js2-mode-hook #'setup-tide-mode)
-#+END_SRC
-
 * NGINX
 #+BEGIN_SRC emacs-lisp
 (setq nginx-indent-level 2)
@@ -204,11 +176,11 @@
             (c-set-offset 'label 2)))
 #+END_SRC
 
-* TypeScript-LSP
+* JavaScript-LSP
 #+BEGIN_SRC emacs-lisp
 (add-hook 'js-mode-hook #'lsp)
 (add-hook 'js2-mode-hook #'lsp)
-(add-hook 'typescript-mode-hook #'lsp) ;; for typescript support
+(add-hook 'typescript-mode-hook #'lsp)
 #+END_SRC
 
 * LSP General
