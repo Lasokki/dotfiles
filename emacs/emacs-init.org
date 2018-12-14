@@ -146,6 +146,7 @@
 * NGINX
 #+BEGIN_SRC emacs-lisp
 (setq nginx-indent-level 2)
+(add-hook 'nginx-mode-hook #'company-nginx-keywords)
 #+END_SRC
 
 * Rust
