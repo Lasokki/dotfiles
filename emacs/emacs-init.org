@@ -1,0 +1,223 @@
+* Backup directory and tabs
+#+BEGIN_SRC emacs-lisp
+(setq backup-directory-alist `(("." . "~/.emacs_backups")))
+(setq-default indent-tabs-mode nil)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(setq org-replace-disputed-keys t)
+#+END_SRC
+
+* flycheck
+#+BEGIN_SRC emacs-lisp
+
+(add-hook 'after-init-hook 'global-flycheck-mode)
+
+(setq-default flycheck-disabled-checkers
+  (append flycheck-disabled-checkers
+    '(javascript-jshint)))
+
+(flycheck-add-mode 'javascript-eslint 'web-mode)
+(flycheck-add-mode 'javascript-eslint 'js-mode)
+(flycheck-add-mode 'javascript-eslint 'js2-mode)
+;;(flycheck-add-mode 'javascript-eslint 'vue-mode)
+
+(flycheck-add-mode 'html-tidy 'vue-html-mode)
+
+(setq-default flycheck-temp-prefix ".flycheck")
+
+(setq-default flycheck-disabled-checkers
+  (append flycheck-disabled-checkers
+    '(json-jsonlist)))
+
+#+END_SRC
+
+* Web-mode
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+(setq web-mode-enable-auto-pairing t)
+(setq web-mode-enable-css-colorization t)
+(setq default-tab-width 2)
+#+END_SRC
+
+* JS
+#+BEGIN_SRC emacs-lisp
+(setq js-indent-level 2)
+#+END_SRC
+
+* JS2
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(setq js2-strict-missing-semi-warning nil)
+(setq js2-missing-semi-one-line-override t)
+(setq js2-basic-offset 2)
+
+(add-hook 'js2-mode-hook 'ac-js2-mode 'turn-on-fixme-mode)
+(add-hook 'js2-mode-hook 'prettier-js-mode)
+#+END_SRC
+
+* JSON
+#+BEGIN_SRC emacs-lisp
+(add-hook 'json-mode-hook #'flycheck-mode)
+#+END_SRC
+
+* Vue
+#+BEGIN_SRC emacs-lisp
+(add-hook 'vue-mode-hook #'lsp)
+(add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode))
+#+END_SRC
+* AC-Config
+;;(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+;;(ac-config-default)
+
+* Revert-buffer
+#+BEGIN_SRC emacs-lisp
+(defun revert-all-buffers ()
+"Refreshes all open buffers from their respective files."
+(interactive)
+(dolist (buf (buffer-list))
+(with-current-buffer buf
+(when (and (buffer-file-name) (file-exists-p (buffer-file-name)) (not (buffer-modified-p)))
+(revert-buffer t t t) )))
+(message "Refreshed open files.") )
+#+END_SRC
+
+* Expand-region
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-<return>") 'er/expand-region)
+(global-set-key (kbd "C-M-<return>") 'er/contract-region)
+(delete-selection-mode 1)
+#+END_SRC
+* Magit
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-x g") 'magit-status)
+(setq magit-diff-auto-show nil)
+(add-hook 'git-commit-mode-hook (lambda () (save-selected-window (magit-process-buffer))))
+#+END_SRC
+
+* company-mode
+
+(add-hook 'after-init-hook 'global-company-mode)
+(add-to-list 'company-backends 'company-web-html)
+(add-to-list 'company-backends 'company-web-jade)
+(add-to-list 'company-backends 'company-web-slim)
+
+* dired-open-multiple-files
+#+BEGIN_SRC emacs-lisp
+(eval-after-load "dired"
+  '(progn
+     (define-key dired-mode-map "F" 'my-dired-find-file)
+     (defun my-dired-find-file (&optional arg)
+       "Open each of the marked files, or the file under the point, or when prefix arg, the next N files "
+       (interactive "P")
+       (let* ((fn-list (dired-get-marked-files nil arg)))
+         (mapc 'find-file fn-list)))))
+#+END_SRC
+* Merlin
+#+BEGIN_SRC emacs-lisp
+(let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
+ (when (and opam-share (file-directory-p opam-share))
+  (add-to-list 'load-path (expand-file-name "emacs/site-lisp" opam-share))
+  (autoload 'merlin-mode "merlin" nil t nil)
+  (add-hook 'tuareg-mode-hook 'merlin-mode t)
+  (add-hook 'caml-mode-hook 'merlin-mode t)))
+(setq merlin-ac-setup 'easy)
+#+END_SRC
+* EditorConfig
+#+BEGIN_SRC emacs-lisp
+(editorconfig-mode 1)
+#+END_SRC
+* Dockerfile
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
+#+END_SRC
+* Helm
+  #+BEGIN_SRC emacs-lisp
+  (helm-mode 1)
+  (global-set-key (kbd "M-x") 'helm-M-x)
+  (global-set-key (kbd "C-x C-f") 'helm-find-files)
+  (global-set-key (kbd "C-c f") 'helm-projectile)
+  #+END_SRC
+* Tide
+#+BEGIN_SRC emacs-lisp
+(defun setup-tide-mode ()
+  (interactive)
+  (tide-setup)
+  (flycheck-mode +1)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1)
+  ;; company is an optional dependency. You have to
+  ;; install it separately via package-install
+  ;; `M-x package-install [ret] company`
+  (company-mode +1))
+
+;; aligns annotation to the right hand side
+(setq company-tooltip-align-annotations t)
+(add-hook 'before-save-hook 'tide-format-before-save)
+(add-hook 'typescript-mode-hook #'setup-tide-mode)
+(add-hook 'js2-mode-hook #'setup-tide-mode)
+#+END_SRC
+* NGINX
+#+BEGIN_SRC emacs-lisp
+(setq nginx-indent-level 2)
+#+END_SRC
+* Rust
+#+BEGIN_SRC emacs-lisp
+(with-eval-after-load 'lsp-mode
+(require 'lsp-rust)
+(add-hook 'rust-mode-hook #'lsp-rust-enable))
+(add-hook 'rust-mode-hook 'cargo-minor-mode)
+(add-hook 'rust-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-c <tab>") #'rust-format-buffer)))
+(add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+(add-hook 'rust-mode-hook #'racer-mode)
+(add-hook 'racer-mode-hook #'eldoc-mode)
+#+END_SRC
+* Groovy
+#+BEGIN_SRC emacs-lisp
+(add-hook 'groovy-mode-hook
+          (lambda ()
+            (c-set-offset 'label 2)))
+#+END_SRC
+* TypeScript-LSP
+#+BEGIN_SRC emacs-lisp
+(add-hook 'js-mode-hook #'lsp)
+(add-hook 'js2-mode-hook #'lsp)
+(add-hook 'typescript-mode-hook #'lsp) ;; for typescript support
+#+END_SRC
+* LSP General
+#+BEGIN_SRC emacs-lisp
+(add-hook 'lsp-after-open-hook 'lsp-enable-imenu)
+#+END_SRC
+* Restclient
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'auto-mode-alist '("\\.api\\'" . restclient-mode))
+#+END_SRC
+* CSS
+#+BEGIN_SRC emacs-lisp
+
+(add-to-list 'auto-mode-alist '("\\.css\\'" . xah-css-mode))
+
+(defun my-css-mode-setup ()
+  (when (eq major-mode 'xah-mode)
+    ;; Only enable in strictly css-mode, not scss-mode (css-mode-hook
+    ;; fires for scss-mode because scss-mode is derived from css-mode)
+    (lsp)))
+
+(add-hook 'xah-mode-hook #'lsp)
+(add-hook 'css-mode-hook #'my-css-mode-setup)
+(add-hook 'less-mode-hook #'lsp)
+(add-hook 'sass-mode-hook #'lsp)
+(add-hook 'scss-mode-hook #'lsp)
+#+END_SRC
