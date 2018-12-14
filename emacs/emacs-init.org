@@ -62,11 +62,6 @@
 (add-hook 'js2-mode-hook 'prettier-js-mode)
 #+END_SRC
 
-* JSON
-#+BEGIN_SRC emacs-lisp
-(add-hook 'json-mode-hook #'flycheck-mode)
-#+END_SRC
-
 * Vue
 #+BEGIN_SRC emacs-lisp
 (add-hook 'vue-mode-hook #'lsp)
