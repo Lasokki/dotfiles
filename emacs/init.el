@@ -18,6 +18,7 @@
 (require 'expand-region)
 (require 'fic-mode)
 (require 'company)
+(require 'company-lsp)
 (require 'flycheck)
 (require 'editorconfig)
 (require 'dockerfile-mode)

@@ -102,6 +102,11 @@
 (add-to-list 'company-backends 'company-web-slim)
 #+END_SRC
 
+Company-LSP
+#+BEGIN_SRC emacs-lisp
+(setq company-lsp-enable-recompletion t)
+#+END_SRC
+
 UI tweaking
 #+BEGIN_SRC emacs-lisp
 (let ((bg (face-attribute 'default :background)))
