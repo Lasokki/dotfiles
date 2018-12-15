@@ -16,7 +16,6 @@
 (require 'ob-tangle)
 (require 'web-mode)
 (require 'expand-region)
-(require 'fic-mode)
 (require 'company)
 (require 'company-lsp)
 (require 'flycheck)
