@@ -146,6 +146,17 @@ UI tweaking
 (editorconfig-mode 1)
 #+END_SRC
 
+See [[https://github.com/editorconfig/editorconfig-emacs/issues/169][issue about vue- and mmm-mode]]
+#+BEGIN_SRC emacs-lisp
+(with-eval-after-load 'editorconfig
+  (add-to-list 'editorconfig-indentation-alist
+               '(vue-mode css-indent-offset
+                          js-indent-level
+                          sgml-basic-offset
+                          ssass-tab-width
+                          )))
+#+END_SRC
+
 * Dockerfile
 #+BEGIN_SRC emacs-lisp
 (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
