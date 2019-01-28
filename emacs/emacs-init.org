@@ -61,6 +61,10 @@
 
 (add-hook 'js2-mode-hook 'prettier-js-mode)
 #+END_SRC
+* TypeScript
+#+BEGIN_SRC emacs-lisp
+(add-hook 'typescript-mode-hook 'prettier-js-mode)
+#+END_SRC
 
 * Vue
 #+BEGIN_SRC emacs-lisp
