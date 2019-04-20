@@ -7,7 +7,10 @@
 #+BEGIN_SRC emacs-lisp
 (setq org-replace-disputed-keys t)
 #+END_SRC
-
+* Enable parenthesis hilight
+#+BEGIN_SRC emacs-lisp
+(show-paren-mode 1)
+#+END_SRC
 * flycheck
 #+BEGIN_SRC emacs-lisp
 
