@@ -234,3 +234,10 @@ See [[https://github.com/editorconfig/editorconfig-emacs/issues/169][issue about
 (add-hook 'sass-mode-hook #'lsp)
 (add-hook 'scss-mode-hook #'lsp)
 #+END_SRC
+* Clojure
+#+BEGIN_SRC emacs-lisp
+(setq cider-cljs-lein-repl
+	"(do (require 'figwheel-sidecar.repl-api)
+         (figwheel-sidecar.repl-api/start-figwheel!)
+         (figwheel-sidecar.repl-api/cljs-repl))")
+#+END_SRC

@@ -27,8 +27,8 @@
 (require 'nginx-mode)
 (require 'xah-css-mode)
 (require 'lsp-mode)
-(require 'lsp-clients)
 (require 'groovy-mode)
+(require 'cider)
 
 ;;; Code:
 (setq load-prefer-newer t)
