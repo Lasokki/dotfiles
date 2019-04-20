@@ -185,9 +185,7 @@ See [[https://github.com/editorconfig/editorconfig-emacs/issues/169][issue about
 
 * Rust
 #+BEGIN_SRC emacs-lisp
-(with-eval-after-load 'lsp-mode
-(require 'lsp-rust)
-(add-hook 'rust-mode-hook #'lsp-rust-enable))
+(add-hook 'rust-mode-hook #'lsp)
 (add-hook 'rust-mode-hook 'cargo-minor-mode)
 (add-hook 'rust-mode-hook
           (lambda ()
