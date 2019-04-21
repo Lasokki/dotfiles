@@ -1,19 +1,17 @@
 import XMonad
 import XMonad.Layout.NoBorders
 import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.ICCCMFocus
 import XMonad.Util.EZConfig(additionalKeys)                 -- for additionalKeys
 import Graphics.X11.ExtraTypes.XF86
 
 -- The main function.
 main = xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig
-    { layoutHook         = smartBorders $ layoutHook defaultConfig
+    { layoutHook         = smartBorders $ layoutHook def
     , borderWidth        = 2
     , terminal           = "urxvt"
     , normalBorderColor  = "#cccccc"
     , focusedBorderColor = "#ff0000"
     , modMask            = mod4Mask }
-
 
 -- Command to launch the bar.
 myBar = "xmobar"
@@ -25,11 +23,9 @@ myPP = xmobarPP { ppCurrent = xmobarColor "#429942" "" . wrap "<" ">" }
 toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 
 -- Main configuration, override the defaults to your liking.
--- myConfig = defaultConfig { modMask = mod4Mask , startupHook = spawn "~/.xmonad/startup.sh", logHook = myLogHook} `additionalKeys` addkeys
-myConfig = defaultConfig { modMask = mod4Mask , logHook = myLogHook} `additionalKeys` addkeys
+myConfig = def { modMask = mod4Mask , logHook = myLogHook} `additionalKeys` addkeys
 
 myLogHook = do
-  takeTopFocus
   dynamicLogWithPP xmobarPP 
 
 -- Custom keys with better dmenu
@@ -41,12 +37,4 @@ addkeys = [
         ((0 , xF86XK_MonBrightnessDown), spawn "xbacklight -dec 10"),
         ((0 , xF86XK_MonBrightnessUp), spawn "xbacklight -inc 10"),
         ((0 , xK_Print), spawn "gnome-screenshot")
-
         ]
-
---main = xmonad $ defaultConfig
---    { borderWidth        = 2
---    , terminal           = "urxvt"
---    , normalBorderColor  = "#cccccc"
---    , focusedBorderColor = "#ff0000"
---    , modMask            = mod4Mask }
