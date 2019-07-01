@@ -237,8 +237,7 @@ See [[https://github.com/editorconfig/editorconfig-emacs/issues/169][issue about
 #+END_SRC
 * Clojure
 #+BEGIN_SRC emacs-lisp
-(setq cider-cljs-lein-repl
-	"(do (require 'figwheel-sidecar.repl-api)
-         (figwheel-sidecar.repl-api/start-figwheel!)
-         (figwheel-sidecar.repl-api/cljs-repl))")
+(add-hook 'clojure-mode-hook #'paredit-mode)
+(add-hook 'clojurescript-mode-hook #'paredit-mode)
+(add-hook 'cider-repl-mode-hook #'paredit-mode)
 #+END_SRC
