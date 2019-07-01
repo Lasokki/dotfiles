@@ -11,6 +11,13 @@
 #+BEGIN_SRC emacs-lisp
 (show-paren-mode 1)
 #+END_SRC
+* Org-mode
+#+BEGIN_SRC emacs-lisp
+(setq org-src-fontify-natively t
+    org-src-tab-acts-natively t
+    org-confirm-babel-evaluate nil
+    org-edit-src-content-indentation 0)
+#+END_SRC
 * flycheck
 #+BEGIN_SRC emacs-lisp
 
