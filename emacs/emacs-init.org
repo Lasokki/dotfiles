@@ -182,6 +182,8 @@ See [[https://github.com/editorconfig/editorconfig-emacs/issues/169][issue about
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "C-c f") 'helm-projectile)
+(define-key helm-map (kbd "<left>") 'helm-find-files-up-one-level)
+(define-key helm-map (kbd "<right>") 'helm-execute-persistent-action)
 #+END_SRC
 
 * NGINX
