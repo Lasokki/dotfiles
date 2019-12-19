@@ -248,7 +248,9 @@ See [[https://github.com/editorconfig/editorconfig-emacs/issues/169][issue about
 * Clojure
 #+BEGIN_SRC emacs-lisp
 (add-hook 'clojure-mode-hook #'paredit-mode)
+(add-hook 'clojure-mode-hook #'aggressive-indent-mode)
 (add-hook 'clojurescript-mode-hook #'paredit-mode)
+(add-hook 'clojurescript-mode-hook #'aggressive-indent-mode)
 (add-hook 'cider-repl-mode-hook #'paredit-mode)
 #+END_SRC
 * Python
