@@ -7,10 +7,12 @@
 #+BEGIN_SRC emacs-lisp
 (setq org-replace-disputed-keys t)
 #+END_SRC
+
 * Enable parenthesis hilight
 #+BEGIN_SRC emacs-lisp
 (show-paren-mode 1)
 #+END_SRC
+
 * Org-mode
 #+BEGIN_SRC emacs-lisp
 (setq org-src-fontify-natively t
@@ -18,9 +20,9 @@
     org-confirm-babel-evaluate nil
     org-edit-src-content-indentation 0)
 #+END_SRC
+
 * flycheck
 #+BEGIN_SRC emacs-lisp
-
 (add-hook 'after-init-hook 'global-flycheck-mode)
 
 (setq-default flycheck-disabled-checkers
@@ -70,6 +72,7 @@
 (setq js2-basic-offset 2)
 
 (add-hook 'js2-mode-hook 'prettier-js-mode)
+
 #+END_SRC
 * TypeScript
 #+BEGIN_SRC emacs-lisp
@@ -245,6 +248,7 @@ See [[https://github.com/editorconfig/editorconfig-emacs/issues/169][issue about
 (add-hook 'sass-mode-hook #'lsp)
 (add-hook 'scss-mode-hook #'lsp)
 #+END_SRC
+
 * Clojure
 #+BEGIN_SRC emacs-lisp
 (add-hook 'clojure-mode-hook #'paredit-mode)
@@ -253,6 +257,7 @@ See [[https://github.com/editorconfig/editorconfig-emacs/issues/169][issue about
 (add-hook 'clojurescript-mode-hook #'aggressive-indent-mode)
 (add-hook 'cider-repl-mode-hook #'paredit-mode)
 #+END_SRC
+
 * Python
 #+BEGIN_SRC emacs-lisp
 (setq flycheck-python-pycompile-executable "python3")
