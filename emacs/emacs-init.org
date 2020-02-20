@@ -262,3 +262,8 @@ See [[https://github.com/editorconfig/editorconfig-emacs/issues/169][issue about
 #+BEGIN_SRC emacs-lisp
 (setq flycheck-python-pycompile-executable "python3")
 #+END_SRC
+
+* which-key
+#+BEGIN_SRC emacs-lisp
+(which-key-mode)
+#+END_SRC
