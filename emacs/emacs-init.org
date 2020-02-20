@@ -256,6 +256,16 @@ See [[https://github.com/editorconfig/editorconfig-emacs/issues/169][issue about
 (add-hook 'clojurescript-mode-hook #'paredit-mode)
 (add-hook 'clojurescript-mode-hook #'aggressive-indent-mode)
 (add-hook 'cider-repl-mode-hook #'paredit-mode)
+(add-hook 'clojure-mode-hook
+          (lambda ()
+            (setq comment-indent-function 'comment-indent-default)
+            (setq comment-add 0)
+            (comment-normalize-vars)))
+(add-hook 'clojurescript-mode-hook
+          (lambda ()
+            (setq comment-indent-function 'comment-indent-default)
+            (setq comment-add 0)
+            (comment-normalize-vars)))
 #+END_SRC
 
 * Python
