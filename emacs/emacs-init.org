@@ -13,6 +13,12 @@
 (show-paren-mode 1)
 #+END_SRC
 
+* Calendar
+Start week on Monday
+#+BEGIN_SRC emacs-lisp
+(setq calendar-week-start-day 1)
+#+END_SRC
+
 * Org-mode
 - Hooks
 #+BEGIN_SRC emacs-lisp
