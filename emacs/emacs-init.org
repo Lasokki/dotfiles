@@ -27,6 +27,18 @@
     org-edit-src-content-indentation 0)
 #+END_SRC
 
+- Key mappings for org-agenda
+#+BEGIN_SRC emacs-lisp
+(define-key global-map "\C-ca" 'org-agenda)
+#+END_SRC
+
+- Set agenda files and logging
+#+BEGIN_SRC emacs-lisp
+(setq org-agenda-files (list "~/org/työ.org"
+                             "~/org/muistiinpanoja.org"))
+(setq org-log-done t)
+#+END_SRC
+
 * flycheck
 #+BEGIN_SRC emacs-lisp
 (add-hook 'after-init-hook 'global-flycheck-mode)
