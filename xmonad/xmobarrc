@@ -11,7 +11,7 @@ Config { font = "xft:Bitstream Vera Sans Mono:size=11:bold:antialias=true"
                     --, Run Wireless "wlan0" ["-L","0","-H","60","--normal","red","--high","green", "-p", "3"] 10
                     , Run DynNetwork ["-t", "<dev>: <rx>kB/s|<tx>kB/s"] 10
                     , Run Cpu ["-L","3","-H","50","--normal","green","--high","red", "-p", "3"] 10
-                    , Run Battery ["-t", "Batt: <acstatus> <left>%", "-L", "20", "-H", "80", "-l", "red","-h", "green", "-n", "yellow"] 10
+                    , Run Battery ["-t", "Batt: <acstatus> <left>%", "-L", "20", "-H", "50", "-l", "red","-h", "green", "-n", "yellow3"] 10
 		    , Run Memory ["-t","Mem: <usedratio>%", "-p", "3"] 10
                     , Run Swap ["-p", "3"] 10
                     , Run Com "uname" ["-s","-r"] "" 36000
