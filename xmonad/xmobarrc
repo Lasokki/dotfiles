@@ -11,7 +11,7 @@ Config { font = "xft:Bitstream Vera Sans Mono:size=11:bold:antialias=true"
 		    , Run Memory ["-t","Mem: <usedratio>%", "-p", "3"] 10
                     , Run Swap ["-p", "3"] 10
                     , Run Com "uname" ["-s","-r"] "" 36000
-		    , Run Com "/home/lasokki/getvolume.sh" [] "vol" 10
+		    --, Run Com "/home/lasokki/getvolume.sh" [] "vol" 10
 		    --, Run Com "/home/lasokki/getbrightness.sh" [] "bright" 10
         -- , Run Brightness ["", ""] 60
         , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
