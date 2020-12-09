@@ -33,6 +33,14 @@ Start week on Monday
     org-edit-src-content-indentation 0)
 #+END_SRC
 
+- Babel configuration
+#+BEGIN_SRC emacs-lisp
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (sql . t)))
+#+END_SRC
+
 - Key mappings for org-agenda
 #+BEGIN_SRC emacs-lisp
 (define-key global-map "\C-ca" 'org-agenda)
