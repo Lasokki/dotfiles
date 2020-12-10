@@ -26,7 +26,7 @@ Config { font = "xft:Bitstream Vera Sans Mono:size=11:bold:antialias=true"
                     , Run Swap ["-p", "3"] 10
                     , Run Com "uname" ["-s","-r"] "" 36000
 		    --, Run Com "/home/lasokki/getvolume.sh" [] "vol" 10
-                    , Run Brightness ["-t", "Bright: <bar>", "--", "-D", "intel_backlight"] 60
+                    , Run Brightness ["-t", "Bright: <bar>", "-L", "35", "-H", "65", "-l", "gray50", "-n", "gray65", "-h", "white", "--", "-D", "intel_backlight"] 60
                     , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
 		    , Run StdinReader
                     ]
