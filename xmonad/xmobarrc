@@ -5,7 +5,7 @@ Config { font = "xft:Bitstream Vera Sans Mono:size=11:bold:antialias=true"
        , lowerOnStart = True
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %cpu% | %memory% | %dynnetwork% | <fc=#ee9a00>%date%</fc> | %EFTP% | %battery%"
+       , template = "%StdinReader% }{ %cpu% | %memory% | %dynnetwork% | <fc=#ee9a00>%date%</fc> | %EFTP% | %bright% | %battery%"
        , commands = [ Run WeatherX "EFTP"
                                  [ ("clear", "🌣")
                                  , ("sunny", "🌣")
@@ -28,8 +28,7 @@ Config { font = "xft:Bitstream Vera Sans Mono:size=11:bold:antialias=true"
                     , Run Swap ["-p", "3"] 10
                     , Run Com "uname" ["-s","-r"] "" 36000
 		    --, Run Com "/home/lasokki/getvolume.sh" [] "vol" 10
-		    --, Run Com "/home/lasokki/getbrightness.sh" [] "bright" 10
-                    --, Run Brightness ["-t", "<percent>"] 60 <-- tuottaa arvon hurz????
+                    , Run Brightness ["-t", "Bright: <bar>", "--", "-D", "intel_backlight"] 60
                     , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
 		    , Run StdinReader
                     ]
