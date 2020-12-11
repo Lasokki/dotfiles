@@ -21,8 +21,8 @@ Config { font = "xft:Bitstream Vera Sans Mono:size=11:bold:antialias=true"
                       ["-t","<station>: <tempC>C <windMs>m/s <skyConditionS>","-L","8","-H","20","--normal","green","--high","red","--low","lightblue"] 1800
                     , Run DynNetwork ["-t", "<dev>: <fc=cadetblue><rx></fc> kB/s <fc=darkorange3><tx></fc> kB/s", "-w", "6"] 10
                     , Run Cpu ["-L","3","-H","50","--normal","green","--high","red", "-p", "3"] 10
-                    , Run Battery ["-t", "Batt: <acstatus> <left>%", "-L", "20", "-H", "50", "-l", "red","-h", "green", "-n", "yellow3"] 10
-		    , Run Memory ["-t","Mem: <usedratio>%", "-p", "3"] 10
+                    , Run Battery ["-t", "Batt: <acstatus> <left>%", "-L", "20", "-H", "50", "-l", "red","-h", "green", "-n", "yellow3", "--", "-O", "<fc=yellow4>Charging...</fc>", "-i", "<fc=cadetblue>Plugged</fc>","-o", "<fc=darkorange3>Off</fc>"] 10
+		    , Run Memory ["-t","Mem: <usedratio>%","-L", "50", "-H", "80", "-l", "green", "-n", "yellow3","-h", "red", "-p", "3"] 10
                     , Run Swap ["-p", "3"] 10
                     , Run Com "uname" ["-s","-r"] "" 36000
 		    --, Run Com "/home/lasokki/getvolume.sh" [] "vol" 10
