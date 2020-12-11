@@ -5,19 +5,20 @@ Config { font = "xft:Bitstream Vera Sans Mono:size=11:bold:antialias=true"
        , lowerOnStart = True
        , sepChar = "%"
        , alignSep = "}{"
+       , iconRoot = "/home/lasokki/icons"
        , template = "%StdinReader% }{ %cpu% | %memory% | %dynnetwork% | <fc=#ee9a00>%date%</fc> | %EFTP% | %bright% | %battery%"
        , commands = [ Run WeatherX "EFTP"
-                                 [ ("clear", "🌣")
-                                 , ("sunny", "🌣")
-                                 , ("mostly clear", "🌤")
-                                 , ("mostly sunny", "🌤")
-                                 , ("partly sunny", "⛅")
-                                 , ("fair", "🌑")
-                                 , ("cloudy","☁")
-                                 , ("overcast","☁")
-                                 , ("partly cloudy", "⛅")
-                                 , ("mostly cloudy", "🌧")
-                                 , ("considerable cloudiness", "⛈")]
+                                 [ ("clear", "<icon=weather/24/clear.xpm/>")
+                                 , ("sunny", "<icon=weather/24/sunny.xpm/>")
+                                 , ("mostly clear", "<icon=weather/24/mostly-clear.xpm/>")
+                                 , ("mostly sunny", "<icon=weather/24/mostly-sunny.xpm/>")
+                                 , ("partly sunny", "<icon=weather/24/partly-sunny.xpm/>")
+                                 , ("fair", "<icon=weather/24/partly-cloudy.xpm/>") -- What is this?
+                                 , ("cloudy","<icon=weather/24/cloudy.xpm/>")
+                                 , ("overcast","<icon=weather/24/cloudy.xpm/>")
+                                 , ("partly cloudy", "<icon=weather/24/partly-cloudy.xpm/>")
+                                 , ("mostly cloudy", "<icon=weather/24/mostly-cloudy.xpm/>")
+                                 , ("considerable cloudiness", "<icon=weather/24/mostly-cloudy.xpm/>")] -- Something else here?
                       ["-t","<station>: <tempC>C <windMs>m/s <skyConditionS>","-L","8","-H","20","--normal","green","--high","red","--low","lightblue"] 1800
                     , Run DynNetwork ["-t", "<dev>: <fc=cadetblue><rx></fc> kB/s <fc=darkorange3><tx></fc> kB/s", "-w", "6"] 10
                     , Run Cpu ["-L","3","-H","50","--normal","green","--high","red", "-p", "3"] 10
