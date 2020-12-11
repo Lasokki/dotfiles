@@ -13,6 +13,3 @@ int_w=`xrandr | sed 's/^'"${INT}"' [^0-9]* \([0-9]\+\)x.*$/\1/p;d'`
 off_w=`echo $(( ($int_w-$ext_w)/2 )) | sed 's/^-//'`
 
 xrandr --output "${INT}" --auto --pos ${off_w}x${ext_h} --scale 1x1 --output "${EXT}" --auto --primary --panning 4480x2520+2560+0 --scale 1.75x1.75 --pos 0x0 --right-of eDP1
-
-
-
