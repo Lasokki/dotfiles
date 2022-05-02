@@ -1,3 +1,9 @@
+* elisp
+#+BEGIN_SRC emacs-lisp
+(add-hook 'emacs-lisp-mode-hook #'paredit-mode)
+(global-set-key (kbd "C-j") 'eval-print-last-sexp)
+#+END_SRC
+
 * Backup directory and tabs
 #+BEGIN_SRC emacs-lisp
 (setq backup-directory-alist `(("." . "~/.emacs_backups")))
@@ -20,10 +26,6 @@ Start week on Monday
 #+END_SRC
 
 * Org-mode
-- Hooks
-#+BEGIN_SRC emacs-lisp
-(add-hook 'emacs-lisp-mode-hook #'paredit-mode)
-#+END_SRC
 
 - Setup for tabbing and font hilight
 #+BEGIN_SRC emacs-lisp
@@ -265,17 +267,17 @@ See [[https://github.com/editorconfig/editorconfig-emacs/issues/169][issue about
 
 * CSS
 #+BEGIN_SRC emacs-lisp
-(add-to-list 'auto-mode-alist '("\\.css\\'" . xah-css-mode))
+;;(add-to-list 'auto-mode-alist '("\\.css\\'" . xah-css-mode))
 (setq css-indent-offset 2)
 
-(defun my-css-mode-setup ()
-  (when (eq major-mode 'xah-mode)
+;;(defun my-css-mode-setup ()
+;;  (when (eq major-mode 'xah-mode)
     ;; Only enable in strictly css-mode, not scss-mode (css-mode-hook
     ;; fires for scss-mode because scss-mode is derived from css-mode)
-    (lsp)))
+;;    (lsp)))
 
-(add-hook 'xah-mode-hook #'lsp)
-(add-hook 'css-mode-hook #'my-css-mode-setup)
+;;(add-hook 'xah-mode-hook #'lsp)
+;;(add-hook 'css-mode-hook #'my-css-mode-setup)
 (add-hook 'less-mode-hook #'lsp)
 (add-hook 'sass-mode-hook #'lsp)
 (add-hook 'scss-mode-hook #'lsp)
@@ -284,20 +286,29 @@ See [[https://github.com/editorconfig/editorconfig-emacs/issues/169][issue about
 * Clojure
 #+BEGIN_SRC emacs-lisp
 (add-hook 'clojure-mode-hook #'paredit-mode)
-(add-hook 'clojure-mode-hook #'aggressive-indent-mode)
+;;(add-hook 'clojure-mode-hook #'aggressive-indent-mode)
 (add-hook 'clojurescript-mode-hook #'paredit-mode)
-(add-hook 'clojurescript-mode-hook #'aggressive-indent-mode)
+;;(add-hook 'clojurescript-mode-hook #'aggressive-indent-mode)
 (add-hook 'cider-repl-mode-hook #'paredit-mode)
 (add-hook 'clojure-mode-hook
           (lambda ()
+            (setq clojure-indent-style 'always-indent)
             (setq comment-indent-function 'comment-indent-default)
             (setq comment-add 0)
             (comment-normalize-vars)))
 (add-hook 'clojurescript-mode-hook
           (lambda ()
+            (setq clojure-indent-style 'always-indent)
             (setq comment-indent-function 'comment-indent-default)
             (setq comment-add 0)
             (comment-normalize-vars)))
+#+END_SRC
+
+* Clojure-LSP
+#+BEGIN_SRC emacs-lisp
+(add-hook 'clojure-mode-hook #'lsp)
+(add-hook 'clojurescript-mode-hook 'lsp)
+(add-hook 'clojurec-mode-hook 'lsp)
 #+END_SRC
 
 * Python
@@ -309,3 +320,12 @@ See [[https://github.com/editorconfig/editorconfig-emacs/issues/169][issue about
 #+BEGIN_SRC emacs-lisp
 (which-key-mode)
 #+END_SRC
+* es-mode (ElasticSearch)
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'auto-mode-alist '("\\.es$" . es-mode))
+#+END_SRC
+* SQL
+#+BEGIN_SRC emacs-lisp
+(add-hook 'sql-mode-hook #'sqlind-minor-mode)
+#+END_SRC
+
