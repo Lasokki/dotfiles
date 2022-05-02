@@ -16,7 +16,7 @@ Config { font = "xft:Bitstream Vera Sans Mono:size=11:bold:antialias=true"
                                  , ("fair", "<icon=weather/24/partly-cloudy.xpm/>") -- What is this?
                                  , ("cloudy","<icon=weather/24/cloudy.xpm/>")
                                  , ("overcast","<icon=weather/24/cloudy.xpm/>")
-                                 , ("partly cloudy", "<icon=weather/24/partly-cloudy.xpm/>")
+                                 , ("partly cloudy", "<icon=weather/24/partly-cloudy.xpm/>") -- NOAA gives partly cloudy during day too. Weird. Might be problem in time zones?
                                  , ("mostly cloudy", "<icon=weather/24/mostly-cloudy.xpm/>")
                                  , ("considerable cloudiness", "<icon=weather/24/mostly-cloudy.xpm/>") -- Something else here?
                                  , ("obscured", "<icon=weather/24/fog.xpm/>")]
