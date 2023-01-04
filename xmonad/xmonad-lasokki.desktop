@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=XMonad-Lasokki
+Comment=My xmonad config
+Exec=/home/lasokki/.xmonad/startxmonad.sh
+Type=XSession
