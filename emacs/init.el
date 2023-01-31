@@ -27,7 +27,6 @@
 (require 'nginx-mode)
 ;;(require 'xah-css-mode)
 (require 'lsp-mode)
-(require 'groovy-mode)
 (require 'cider)
 (require 'which-key)
 (require 'sql-indent)

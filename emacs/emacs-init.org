@@ -241,13 +241,6 @@ See [[https://github.com/editorconfig/editorconfig-emacs/issues/169][issue about
 (add-hook 'racer-mode-hook #'eldoc-mode)
 #+END_SRC
 
-* Groovy
-#+BEGIN_SRC emacs-lisp
-(add-hook 'groovy-mode-hook
-          (lambda ()
-            (c-set-offset 'label 2)))
-#+END_SRC
-
 * JavaScript-LSP
 #+BEGIN_SRC emacs-lisp
 (add-hook 'js-mode-hook #'lsp)
