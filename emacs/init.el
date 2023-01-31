@@ -21,7 +21,6 @@
 (require 'flycheck)
 (require 'editorconfig)
 (require 'dockerfile-mode)
-(require 'helm-config)
 (require 'vue-mode)
 (require 'prettier-js)
 (require 'nginx-mode)
